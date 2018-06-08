@@ -1,0 +1,19 @@
+i = input('Enter the Value: ')
+u = []
+b = []
+for x in range(0, len(i)):
+   if i[x] == '1':
+       u.append(x)
+
+c = 0
+for k in range(1, len(u)):
+   x = u[k] - u[c]
+   c = c + 1
+   x = x - 1
+   b.append(x)
+
+b.sort()
+print('The Smallest Distance is', b[0])
+print('The Largest Distance is', b[len(b)-1])
+
+

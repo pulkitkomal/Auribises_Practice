@@ -1,1 +1,1 @@
-print('pulkit komal')   
+print('pulkit komal')
