@@ -2,7 +2,6 @@ a = ['mile', 'xylo', 'apple', 'xavier', 'aar', 'xiar']
 print('Original List', a)
 a.sort()
 c = []
-z = 0
 for x in range(0, len(a)):
     b = a[x]
     if b[0:1] == 'x':
