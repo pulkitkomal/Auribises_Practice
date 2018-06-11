@@ -1,4 +1,5 @@
 a = ['mile', 'xylo', 'apple', 'xavier', 'aar', 'xiar']
+print('Original List', a)
 a.sort()
 c = []
 z = 0
@@ -12,4 +13,4 @@ for y in d:
     if y not in v:
         v.append(y)
 
-print(v)
+print('List after sort', v)
