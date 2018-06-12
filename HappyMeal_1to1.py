@@ -16,9 +16,8 @@ class Order:
 
 
     def show(self):
-        print('Your Order is a {} burger, {} fries & a {} coke. Please wait a few minutes.'.format(self.burger,
-                                                                           self.fries,
-                                                                           self.coke,))
+        print('Your Order is a {} burger, {} fries & a {} coke. Please wait a few minutes.'
+              .format(self.burger, self.fries, self.coke))
 
 
 i1 = input('Your Name? ')
