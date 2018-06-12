@@ -5,8 +5,10 @@ class Amazon:
 
     def showOrder(self):
         print('Welcome ', self.name)
+        print('Today you have ordered: ')
         for o in orderList:
             o.show()
+        print('Your order will be arriving in a few days.')
 
 
 class Order:
@@ -14,11 +16,11 @@ class Order:
         self.order = order
 
     def show(self):
-        print('Today you have ordered a {}'.format(self.order))
+        print('{}'.format(self.order))
 
 
 a1 = input('What is your name? ')
-o1 = int(input('How many items would you like to order today: '))
+o1 = int(input('How many items would you like to order today? '))
 orderList = []
 for x in range(0, o1):
     z = input('Please enter your {} order: '.format(x+1))
