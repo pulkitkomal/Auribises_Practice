@@ -10,16 +10,16 @@ class Burgers:
         b1 = input('Would you like to buy a burger? Enter 1 for Yes and 2 for No: ')
         if b1 == '1':
             b2 = input('''Which burger would you like to eat? Please Enter the number from the list below.
-1. McAloo Tikki
-2. McVeggie
-3. McSpicy Paneer
-4. McEgg
-5. Chicken McGrill
-6. McChicken
-7. Filet-O-Fish
-8. McSpicy Chicken
-9. Veg Maharaja Mac
-10. Chicken Maharaja Mac
+    1. McAloo Tikki
+    2. McVeggie
+    3. McSpicy Paneer
+    4. McEgg
+    5. Chicken McGrill
+    6. McChicken
+    7. Filet-O-Fish
+    8. McSpicy Chicken
+    9. Veg Maharaja Mac
+    10. Chicken Maharaja Mac
 Press Enter 0 for None  ''')
             if b2 == '1':
                 a_first.DB.totalAmt.append(30)

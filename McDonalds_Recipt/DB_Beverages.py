@@ -1,5 +1,6 @@
 from McDonalds_Recipt import a_first
 
+
 class beverages:
 
     def __init__(self, bevName):
