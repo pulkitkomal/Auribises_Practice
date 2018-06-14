@@ -36,6 +36,7 @@ class mcdonalds:
         self.deserts.showDesData()
         tax_state = sum(obj.db.totalAmt) * (2.5/100)
         tax_center = sum(obj.db.totalAmt) * (2.5/100)
+        print('\n')
         print('Sub-Total Rs.', sum(obj.db.totalAmt))
         print('SGST @5% Rs.', tax_state)
         print('CGST @5% Rs.', tax_center)
