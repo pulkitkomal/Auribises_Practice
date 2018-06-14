@@ -43,7 +43,7 @@ class mcdonalds:
         print('Have a nice day')
 
 
-slip = random.randint(1111, 9999)
+slip = random.randint(111, 999)
 
 
 mc = mcdonalds(obj.db, obj.bu, obj.s, obj.b, obj.d, obj.me, slip)
