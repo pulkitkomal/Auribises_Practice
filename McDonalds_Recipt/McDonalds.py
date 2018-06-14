@@ -39,7 +39,7 @@ class mcdonalds:
         print('Sub-Total', sum(obj.db.totalAmt))
         print('SGST @5%', tax_state)
         print('CGST @5%', tax_center)
-        print('Take-Out Total', sum(obj.db.totalAmt) + tax_state + tax_center)
+        print('Take-Out Total', int(sum(obj.db.totalAmt) + tax_state + tax_center))
         print('Have a nice day')
 
 
