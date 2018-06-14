@@ -58,5 +58,5 @@ class sides:
 
     def showSidesData(self):
         print(self.sidesName)
-        print(a_first.DB.totalAmt)
+
 

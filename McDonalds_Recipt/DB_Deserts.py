@@ -42,7 +42,7 @@ class deserts:
 
     def showDesData(self):
         print(self.desName)
-        print(a_first.DB.totalAmt)
+
 
 
 

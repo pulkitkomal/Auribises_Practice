@@ -62,7 +62,6 @@ Press Enter 0 for None  ''')
 
     def showBurgerData(self):
         print(self.burgerName)
-        print(a_first.DB.totalAmt)
 
 
 

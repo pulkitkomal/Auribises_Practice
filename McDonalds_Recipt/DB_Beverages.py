@@ -58,5 +58,5 @@ class beverages:
 
     def showBevData(self):
         print(self.bevName)
-        print(a_first.DB.totalAmt)
+
 
