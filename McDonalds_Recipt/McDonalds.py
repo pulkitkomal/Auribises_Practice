@@ -36,14 +36,14 @@ class mcdonalds:
         self.deserts.showDesData()
         tax_state = sum(obj.db.totalAmt) * (2.5/100)
         tax_center = sum(obj.db.totalAmt) * (2.5/100)
-        print('Sub-Total', sum(obj.db.totalAmt))
-        print('SGST @5%', tax_state)
-        print('CGST @5%', tax_center)
-        print('Take-Out Total', int(sum(obj.db.totalAmt) + tax_state + tax_center))
+        print('Sub-Total Rs.', sum(obj.db.totalAmt))
+        print('SGST @5% Rs.', tax_state)
+        print('CGST @5% Rs.', tax_center)
+        print('Take-Out Total Rs.', int(sum(obj.db.totalAmt) + tax_state + tax_center))
         print('Have a nice day')
 
 
-slip = random.randint(111, 999)
+slip = random.randint(100, 999)
 
 
 mc = mcdonalds(obj.db, obj.bu, obj.s, obj.b, obj.d, obj.me, slip)
