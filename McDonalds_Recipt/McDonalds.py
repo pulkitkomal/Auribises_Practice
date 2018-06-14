@@ -34,7 +34,12 @@ class mcdonalds:
         self.sides.showSidesData()
         self.beverages.showBevData()
         self.deserts.showDesData()
-        print('Total amount is Rs.', sum(obj.db.totalAmt))
+        tax_state = sum(obj.db.totalAmt) * (2.5/100)
+        tax_center = sum(obj.db.totalAmt) * (2.5/100)
+        print('Sub-Total', sum(obj.db.totalAmt))
+        print('SGST @5%', tax_state)
+        print('CGST @5%', tax_center)
+        print('Take-Out Total', sum(obj.db.totalAmt) + tax_state + tax_center)
         print('Have a nice day')
 
 
