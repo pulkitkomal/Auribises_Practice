@@ -55,10 +55,7 @@ class beverages:
             print('No valid input given')
             exit()
 
-    def showSidesData(self):
+    def showBevData(self):
         print(self.bevName)
         print(a_first.DB.totalAmt)
 
-b = beverages(' ')
-b.getBevData()
-b.showSidesData()

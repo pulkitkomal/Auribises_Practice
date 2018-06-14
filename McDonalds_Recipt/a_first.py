@@ -10,6 +10,3 @@ class DB:
     def showDB(self):
         print('Hello', self.name)
 
-d = DB(' ')
-d.getDB()
-d.showDB()

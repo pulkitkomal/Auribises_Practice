@@ -59,6 +59,3 @@ class sides:
         print(self.sidesName)
         print(a_first.DB.totalAmt)
 
-s = sides(' ')
-s.getSidesData()
-s.showSidesData()

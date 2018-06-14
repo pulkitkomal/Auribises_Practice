@@ -65,6 +65,4 @@ Press Enter 0 for None  ''')
         print(a_first.DB.totalAmt)
 
 
-bu = Burgers(' ')
-bu.getBurgerData()
-bu.showBurgerData()
+
