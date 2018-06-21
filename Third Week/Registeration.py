@@ -12,7 +12,7 @@ def onClick():
     elif gender == 'Female':
         gender = 'her'
 
-    print("{} belongs to {}, {} age is {}, you can contact her on {}".format(Name, Country, gender, Age, Email))
+    print("{} belongs to {}, {} age is {} & {} email id is {}".format(Name, Country, gender, Age, gender, Email))
 
 
 root = Tk()
