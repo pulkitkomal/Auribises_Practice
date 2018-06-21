@@ -22,35 +22,35 @@ root = Tk()
 
 
 title = Label(root, text='Hello, please enter the details below! ')
-title.pack()
+title.grid(row=10,column=10)
 
 name = Label(root, text='Enter your name')
-name.pack()
+name.grid(row=20,column=10)
 
 nameEN = Entry(root)
-nameEN.pack()
+nameEN.grid(row=30,column=10)
 
 age = Label(root, text='Enter your age')
-age.pack()
+age.grid(row=40,column=10)
 
 ageEN = Entry(root)
-ageEN.pack()
+ageEN.grid(row=50,column=10)
 
 email = Label(root, text='Enter your email')
-email.pack()
+email.grid(row=60,column=10)
 
 emailEN = Entry(root)
-emailEN.pack()
+emailEN.grid(row=70,column=10)
 
 address = Label(root, text='Enter your address')
-address.pack()
+address.grid(row=80,column=10)
 
 addressEN = Entry(root)
-addressEN.pack()
+addressEN.grid(row=90,column=10)
 
 btn = Button(root, text='Submit', command=onClick)
-btn.pack()
-
+btn.grid(row=100,column=10)
+root.resizable(False,False)
 root.mainloop()
 
 
