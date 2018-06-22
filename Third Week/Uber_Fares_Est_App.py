@@ -46,7 +46,7 @@ class UberFetchData(threading.Thread):
             elif price[x]['localized_display_name'] == 'X':
                 priceXHigh = price[x]['high_estimate']
                 priceXLow = price[x]['low_estimate']
-        faresGo.config(text='Your fare for Uber Go will be between Rs {} & Rs {}'.format(priceGoLow,priceGoHigh))
+        faresGo.config(text='Your fare for Uber Go will be between Rs {} & Rs {}'.format(priceGoLow, priceGoHigh))
         faresMOTO.config(text='Your fare for Uber MOTO will be between Rs {} & Rs {}'.format(priceMOTOLow, priceMOTOHigh))
         faresX.config(text='Your fare for Uber X will be between Rs {} & Rs {}'.format(priceXLow, priceXHigh))
 
@@ -83,8 +83,7 @@ space1 = Label(root, text='           ').grid(row=50, column=0)
 
 btn = Button(root, text='Submit', command=st).grid(row=60, column=5)
 
-space3 = Label(root, text='       ')
-space3.grid(row=70, column=0)
+space2 = Label(root, text='       ').grid(row=70, column=0)
 
 fares = Label(root, text='Your fares will be shown below!! ').grid(row=80, column=5)
 
