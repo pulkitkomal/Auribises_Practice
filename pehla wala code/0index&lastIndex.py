@@ -1,5 +1,4 @@
 y = []
-
 def in_list():
     u = int(input('Enter total elements: '))
 
