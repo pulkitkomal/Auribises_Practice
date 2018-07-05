@@ -69,13 +69,14 @@ class linearREG:
         data = stats.linregress(X, Y)
         b1 = data[0]
         b0 = data[1]
-
+        B1 = str(b1)
+        B0 = str(b0)
         Y1 = []
 
         for x in X:
             y = b0 + (b1 * x)
             Y1.append(y)
-
+        space3.config(text="B1 is {}, B0 is {}".format(B1[0:7],B0[0:7]))
         plt.xlabel('{}'.format(URL1_EN.get()))
         plt.ylabel('{}'.format(URL2_EN.get()))
         plt.grid(True)
@@ -103,7 +104,8 @@ btn2 = Button(root, text='Plot Graph', command=ref.plotGraph).grid(row=30, colum
 
 space2 = Label(root, text='       ')
 space2.grid(row=50, column=0)
-
+space3 = Label(root, text='Please Wait')
+space3.grid(row=60, column=0)
 root.resizable(False, False)
 root.mainloop()
 
