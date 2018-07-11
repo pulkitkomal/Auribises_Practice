@@ -6,9 +6,9 @@ from urlextract import URLExtract
 search = input('Enter the name of the product: ')
 
 searchAMAZON = search.replace(" ", "+")
-
-response = requests.get('https://www.amazon.in/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords={}'.format(searchAMAZON))
-
+URL = 'https://www.amazon.in/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords={}'.format(searchAMAZON)
+response = requests.get(URL)
+print(URL)
 soup = BeautifulSoup(response.text,"html.parser")
 searchAMAZONresults = []
 inrAMAZONresults = []
@@ -76,8 +76,6 @@ def amazonDETAILS():
 
             for t in descTAG:
                 print(t.text)
-        else:
-            pass
     except:
         pass
 def amazonGOBACK():
