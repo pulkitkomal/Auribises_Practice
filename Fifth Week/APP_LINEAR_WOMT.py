@@ -84,6 +84,7 @@ class linearREG:
         plt.show()
 
 
+
 ref = linearREG()
 
 root = Tk()
