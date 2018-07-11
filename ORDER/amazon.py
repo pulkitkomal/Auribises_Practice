@@ -29,6 +29,7 @@ def amazonDATA():
     for text2 in inrAMAZONtags:
         inrAMAZONresults.append(text2.text)
 
+
     extractor = URLExtract()
     for tag in hrefAMAZONtags:
         text = str(tag)
