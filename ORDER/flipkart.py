@@ -69,7 +69,7 @@ try:
     try1()
 except:
     try2()
-ao1 = int(input("Would you like to see customer reviews? " ))
+ao1 = int(input("Would you like to see customer reviews? (press return to exit) " ))
 ao = ao1 - 1
 if ao1 == ao+1:
     url = linkURL[ao]
