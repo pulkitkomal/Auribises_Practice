@@ -16,10 +16,10 @@ def site_login():
     driver.find_element_by_id('username').send_keys('{}'.format(user))
     driver.find_element_by_id ('password').send_keys('{}'.format(passwrd))
 
-    python_button = driver.find_elements_by_xpath("/html/body/div/div[2]/div/div/form/button")[0]
-    python_button.click()
-    python_button1 = driver.find_elements_by_xpath("/html/body/div/div[2]/div/div/div[2]/form/button")[0]
-    python_button1.click()
+    submit = driver.find_elements_by_xpath("/html/body/div/div[2]/div/div/form/button")[0]
+    submit.click()
+    view_attendence = driver.find_elements_by_xpath("/html/body/div/div[2]/div/div/div[2]/form/button")[0]
+    view_attendence.click()
 
     a = driver.find_elements_by_tag_name('tr')
     for x in a:
