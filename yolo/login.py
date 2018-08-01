@@ -1,5 +1,4 @@
 from selenium import webdriver
-import time
 
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
@@ -19,11 +18,55 @@ def site_login():
     a = driver.find_elements_by_tag_name('tr')
     for x in a:
         data_tr.append(x.text)
+    b = driver.find_elements_by_tag_name('td')
+    for x in b:
+        data.append(x.text)
 
     driver.quit()
 
 
 site_login()
-print(data)
-for x in data_tr:
-    print(x)
+for x in range(0,8):
+    print(data_tr[x])
+
+def lecNeeded(p, q):
+    print("lec needed called")
+    p=p+1
+    q=q+1
+    print(p,q)
+    perc2=(q/p)*100
+    print(perc2)
+    lecNeed = q - needLECT
+    print(lecNeed)
+    return lecNeed
+
+
+y = 9
+z = 10
+totallect= 11
+lectureatt = 12
+j = 13
+
+try:
+    for v in range(0,15):
+        print()
+        perc = float(data[j])
+        totLECT= float(data[totallect])
+        needLECT = float(data[lectureatt])
+        print(data[y],data[z],'\nTotal Lectures: ',totLECT,'\nLectures Attented: ',needLECT,'\nPercentage:', perc,'%')
+        y += 6
+        z += 6
+        j += 6
+        totallect += 6
+        lectureatt += 6
+        perc2=perc
+        if(perc2<75.00):
+            p = totLECT
+            q = needLECT
+            res = lecNeeded(p, q)
+
+        print(res)
+
+
+except:
+    pass
