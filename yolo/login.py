@@ -62,11 +62,12 @@ def attendenceDATA():
                 p = p + 1
                 q = q + 1
                 perc3 = (q / p) * 100
+                lecNeed = q - int(data[12])
+                needLECT = lecNeed
                 if perc3 >= 75.00:
                     booll = False
                     um = 1
-                lecNeed = q - int(data[12])
-                needLECT= lecNeed
+
         else:
             pass
         if needLECT == 0:
@@ -80,3 +81,5 @@ try:
 
 except:
     pass
+# 1615325
+# qwerty12
