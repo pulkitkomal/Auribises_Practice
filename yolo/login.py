@@ -74,13 +74,6 @@ def attendenceDATA():
         else:
             print('Lectures you need to attend for 75%: ',needLECT)
 
-
-
-
-
-
-
-
 try:
     site_login()
     attendenceDATA()
