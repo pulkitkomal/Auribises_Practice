@@ -6,6 +6,7 @@ options.add_argument('headless')
 driver = webdriver.Chrome(chrome_options=options, executable_path=r'/home/pulkit/Videos/chromedriver')
 data = []
 data_tr = []
+
 def site_login():
     user = input('Enter Roll No.: ')
     passwrd = input('Enter Password: ')
@@ -56,7 +57,7 @@ def attendenceDATA():
         p = totLECT
         q = attLECT
         needLECT = 0
-        if(perc2<75.00):
+        if(perc2 <= 75.00):
             while(booll):
                 p = p + 1
                 q = q + 1
@@ -66,7 +67,12 @@ def attendenceDATA():
                     um = 1
                 lecNeed = q - int(data[12])
                 needLECT= lecNeed
-        print('Lectures you need to attend for 75%: ',needLECT)
+        else:
+            pass
+        if needLECT == 0:
+            print('You can bunk this class!!')
+        else:
+            print('Lectures you need to attend for 75%: ',needLECT)
 
 
 
