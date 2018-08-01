@@ -63,12 +63,12 @@ def attendenceDATA():
                 p = p + 1
                 q = q + 1
                 perc3 = (q / p) * 100
-
+                lecNeed = q - attLECT
+                needLECT = lecNeed
                 if perc3 >= 75.00:
                     booll = False
                     um = 1
-                lecNeed = q - attLECT
-                needLECT = lecNeed
+
 
         else:
             pass
