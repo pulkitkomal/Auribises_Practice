@@ -53,11 +53,10 @@ def attendenceDATA():
         j += 6
         totallect += 6
         lectureatt += 6
-        perc2=perc
         p = totLECT
         q = attLECT
         needLECT = 0
-        if(perc2 <= 75.00):
+        if(perc <= 75.00):
             while(booll):
                 p = p + 1
                 q = q + 1
