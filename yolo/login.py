@@ -19,6 +19,7 @@ def site_login():
     a = driver.find_elements_by_tag_name('tr')
     for x in a:
         data_tr.append(x.text)
+
     driver.quit()
 
 
