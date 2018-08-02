@@ -1,8 +1,9 @@
 from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
 
-options = webdriver.ChromeOptions()
-options.add_argument('headless')
-driver = webdriver.Chrome(chrome_options=options, executable_path=r'/home/pulkit/Videos/chromedriver')
+options = Options()
+options.add_argument("--headless")
+driver = webdriver.Firefox(firefox_options=options, executable_path="/home/pulkit/Videos/geckodriver")
 
 data = []
 data_tr = []
