@@ -21,6 +21,6 @@ for x in range(0,TNE):
     list.append(a)
 
 
-inp = int(input('Enter Element you to find: '))
+inp = int(input('Enter Element you want to find: '))
 
 print(binary_search(list, inp))
