@@ -43,7 +43,7 @@ TNE = int(input('Total Number of Elements: '))
 for x in range(0,TNE):
     a = int(input('Enter {} Element: '.format(x)))
     list.append(a)
-print('List before merge sort:',list)
+print('List before sort:',list)
 
 quickSort(list)
-print(list)
+print('List after sort: ',list)
