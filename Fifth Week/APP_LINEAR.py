@@ -61,8 +61,14 @@ class linearREG(threading.Thread):
         df = pd.DataFrame(data=dataset, columns=["Artist 1", "Artist 2"])
         df.to_csv("1.csv", index=False, header=True)
 
+        print('Artist 1: ')
+        for x in durListURL1:
+            print(x)
 
 
+        print('Artist 2:')
+        for x in durListURL2:
+            print(x)
 
     def run(self):
         linearREG.url(self)
@@ -84,10 +90,12 @@ def plotGraph():
         y = b0 + (b1*x)
         Y1.append(y)
 
+
     plt.xlabel('{}'.format(URL1_EN.get()))
     plt.ylabel('{}'.format(URL2_EN.get()))
     plt.grid(True)
-    plt.plot(X, Y, "o", X, Y1)
+    plt.plot(X, Y, "o")
+    plt.plot(X, Y1)
     plt.show()
 
 
@@ -116,6 +124,7 @@ btn2 = Button(root, text='Plot Graph', command= plotGraph).grid(row=30, column=5
 
 space2 = Label(root, text='       ')
 space2.grid(row=50, column=0)
+
 
 
 root.resizable(False, False)

@@ -6,6 +6,7 @@ def knapSack(W, wt, val, n):
         return knapSack(W, wt, val, n - 1)
 
     else:
+
         return max(val[n - 1] + knapSack(W - wt[n - 1], wt, val, n - 1),
                    knapSack(W, wt, val, n - 1))
 

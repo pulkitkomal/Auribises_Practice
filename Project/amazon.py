@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
 import requests
 from urlextract import URLExtract
-from Project import search_Input
+# from home/pulkit/PycharmProjects/python_prac/Project import search_Input
 
-search = search_Input.search_INPUT
+search = input("a: ")
 
 searchAMAZON = search.replace(" ", "+")
 URL = 'https://www.amazon.in/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords={}'.format(searchAMAZON)
@@ -35,3 +35,4 @@ def amazonDATA():
         hrefAMAZONresults.append(urls)
 
 amazonDATA()
+print(searchAMAZONresults)
