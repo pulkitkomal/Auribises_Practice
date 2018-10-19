@@ -7,6 +7,9 @@ import threading
 from tkinter import *
 import os
 
+movie = []
+time = []
+year = []
 
 
 class imdbMOVIES(threading.Thread):
@@ -15,7 +18,7 @@ class imdbMOVIES(threading.Thread):
         sdate = lbl2_EN.get()
         edate = lbl3_EN.get()
         totmovies = lbl4_EN.get()
-        print(type(genre))
+        print('Data Scrapping Started !!!')
         link = 'https://www.imdb.com/search/title?genres={}&countries=in&sort=year,asc&count={}&title_type=feature&release_date={},{}-12-31&runtime=1,1000'.format(genre,totmovies,sdate,edate)
         response = requests.get(link)
         soup = BeautifulSoup(response.text, "html.parser")
@@ -28,7 +31,6 @@ class imdbMOVIES(threading.Thread):
             tagMOVIE_list.append(text)
 
         nameMOVIE = soup.find_all('img', class_='loadlate')
-        movie = []
         for x in nameMOVIE:
             z = str(x)
             y = z.find('class')
@@ -36,14 +38,12 @@ class imdbMOVIES(threading.Thread):
             movie.append(nameOfMovie)
 
         timeTAG = soup.find_all('span', class_='runtime')
-        time = []
         for x in timeTAG:
             t = str(x.text[:-4])
             z = int(t)
             time.append(z)
 
         yearTAG = soup.find_all('span', class_='lister-item-year text-muted unbold')
-        year = []
         for x in yearTAG:
             z = str(x.text)
             a = re.findall(r'\d+', z)
@@ -62,6 +62,8 @@ class imdbMOVIES(threading.Thread):
         df.to_csv("tempDATA.csv", index=False, header=True)
         moviesSPACE.config(text = 'Data taken from number of movies : {}'.format(len(movie)))
         yearSPACE.config(text = 'Movies from Year {} to {}'.format(year[0],year[len(year) - 1]))
+        print('Data Scrapped !!!!')
+
 
     def run(self):
         imdbMOVIES.url(self)
@@ -83,7 +85,7 @@ def plotGraph():
         y = b0 + (b1*x)
         Y1.append(y)
     pv = Y1[len(Y1) - 1]
-    plt.title('Next movie predicted time is {}'.format(pv))
+    plt.title('Next movie estimated time is {}'.format(pv))
     plt.xlabel('Year')
     plt.ylabel('Time')
     plt.grid(True)
@@ -98,7 +100,9 @@ def st():
 
 root = Tk()
 
-root.title('Movie Duration Prediction')
+root.title('Movie Duration Estimation')
+
+
 lbl = Label(root, text='Enter Genre').grid(row=0, column=0)
 lbl_EN = Entry(root)
 lbl_EN.grid(row=0, column=10)
@@ -134,6 +138,7 @@ moviesSPACE.grid(row=100, column=0)
 
 yearSPACE = Label(root, text='       ')
 yearSPACE.grid(row=110, column=0)
+
 
 root.resizable(False, False)
 root.mainloop()
