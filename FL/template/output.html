@@ -1,30 +1,58 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <title>Test</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- </head>
- <body>
- <p>{{moviesNUM}}</p>
- <p>{{yearsNUM}}</p>
-
- <img src="{{url_for('static', filename='plot1.png')}}{{image}}"></img>
-  <div class="container">
-   <div class="table-responsive">
+<head>
+    <title>Output</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body{background: #ecf1f4; font-family: sans-serif;}
+        h1 { font-family: Arial Bold; font-size: 23px; font-style: italic; font-variant: normal; font-weight: 700; line-height: 23px; }
+        p { font-family: Arial Bold; font-size: 14px; font-style: italic; font-variant: normal; font-weight: 700; line-height: 23px; }
+    </style>
+</head>
+<body>
+<div align = "center">
+ <h1> {{moviesNUM}}</h1>
+ <h1>{{yearsNUM}}</h1>
+</div>
+<p align = "center">Graph plotted using Matplotlib</p>
+<div align = "center"><img src="{{url_for('static', filename='plot1.png')}}{{image}}"></img>
+</div>
+<div class="container">
+    <div class="table-responsive">
 
     <br />
     <div align="center">
      <button type="button" name="load_data" id="load_data" class="btn btn-info">View Movies</button>
     </div>
-    <br />
-    <div id="employee_table">
+        <br />
+        <div id="employee_table">
+
+        </div>
     </div>
-   </div>
-  </div>
- </body>
+</div>
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
 $(document).ready(function(){

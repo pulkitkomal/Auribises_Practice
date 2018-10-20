@@ -1,8 +1,65 @@
-<form method="POST">
-    genre<input name = "genre">
-    sdate<input name = "sdate">
-    edate<input name = "edate">
-    totmovies<input name = "totmovies">
+<!DOCTYPE html>
 
-    <input type="submit">
-</form>
+
+<html>
+
+
+    <head>
+        <title>Input Form</title>
+    </head>
+
+    <style>
+
+        *{margin: 0; padding: 0;}
+        body{background: #ecf1f4; font-family: sans-serif;}
+
+        .form-wrap{ width: 520px; background: #3e3d3d; padding: 40px 20px; box-sizing: border-box; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);}
+        h1{text-align: center; color: #fff; font-weight: normal; margin-bottom: 20px;}
+        .title{
+            padding: 4px 2px;color: #fff;
+        }
+        input{width: 100%; background: none; border: 1px solid #fff; border-radius: 3px; padding: 6px 15px; box-sizing: border-box; margin-bottom: 20px; font-size: 16px; color: #fff;}
+
+        input[type="button"]{ background: #bac675; border: 0; cursor: pointer; color: #3e3d3d;}
+        input[type="button"]:hover{ background: #a4b15c; transition: .6s;}
+
+        ::placeholder{color: #fff;}
+
+    </style>
+
+    <body>
+
+        <div class="form-wrap" >
+
+            <form method="POST">
+
+                <h1>Moive Duration Estimation using Web Scrapping</h1>
+                <div class = 'title'>
+                    <p>Genre</p>
+                </div>
+                <input type="text" placeholder="Eg. Action, Music, etc" name = "genre">
+                <div class = 'title'>
+                    <p>Starting Year</p>
+                </div>
+                <input type="text" placeholder="Eg. 1990" name = "sdate">
+                                <div class = 'title'>
+                    <p>Ending Year</p>
+                </div>
+                <input type="text" placeholder="Eg. 2018" name = "edate">
+                                <div class = 'title'>
+                    <p>Maximum Number of Movies</p>
+                </div>
+                <input type="text" placeholder="Eg. 200" name = "totmovies">
+
+                <input type="submit">
+            </form>
+
+        </div>
+
+
+
+    </body>
+
+
+
+</html>
