@@ -91,7 +91,10 @@ def plotGraph():
     plt.grid(True)
     plt.plot(X, Y, "o")
     plt.plot(X, Y1)
-    plt.show()
+    plt.savefig('plot.png')
+
+
+
 
 ref = imdbMOVIES()
 

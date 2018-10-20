@@ -6,7 +6,7 @@ from scipy import stats
 import matplotlib.pyplot as plt
 
 genre = input('Enter Genre: ')
-link = 'https://www.imdb.com/search/title?genres={}&countries=in&sort=year,asc&count=1000&title_type=feature&release_date=,2018-12-31&runtime=1,1000'.format('genre')
+link = 'https://www.imdb.com/search/title?genres={}&countries=in&sort=year,asc&count=00&title_type=feature&release_date=2010,2018-12-31&runtime=1,1000'.format('genre')
 response = requests.get(link)
 soup = BeautifulSoup(response.text, "html.parser")
 
@@ -21,7 +21,8 @@ for x in tagMOVIE:
 nameMOVIE = soup.find_all('img',class_ = 'loadlate')
 movie = []
 for x in nameMOVIE:
-    z = str(x)
+    e = str(x)
+    z = e.replace(',','.')
     y = z.find('class')
     nameOfMovie = z[10 : y - 2]
     movie.append(nameOfMovie)
@@ -44,31 +45,4 @@ print(movie)
 print(time)
 print(year)
 
-dataset = list(zip(movie, time, year))
-df = pd.DataFrame(data=dataset, columns=["Movie", "Time", "Year"])
-df.to_csv("tempDATA.csv", index=False, header=True)
 
-def plotGraph():
-    data = pd.read_csv("tempDATA.csv")
-    X = data["Year"].values
-    Y = data["Time"].values
-
-    data = stats.linregress(X,Y)
-    b1 = data[0]
-    b0 = data[1]
-
-    Y1 = []
-
-    for x in X:
-        y = b0 + (b1*x)
-        Y1.append(y)
-    pv = Y1[len(Y1) - 1]
-    plt.title('Next {} movies predicted time is {}'.format(genre,pv))
-    plt.xlabel('Year')
-    plt.ylabel('Time')
-    plt.grid(True)
-    plt.plot(X, Y, "o")
-    plt.plot(X, Y1)
-    plt.show()
-
-plotGraph()

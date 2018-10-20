@@ -1,112 +1,105 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
+from bs4 import BeautifulSoup
+import requests
+import pandas as pd
+from scipy import stats
+import matplotlib.pyplot as plt
+from tkinter import *
+import time
+
 
 app = Flask(__name__,template_folder='/home/pulkit/PycharmProjects/python_prac/FL/template')
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+movie = []
+a_time = []
+year = []
 
 @app.route('/')
-def my_form():
+def index():
     return render_template('index.html')
 
+def plotGraph():
+    data = pd.read_csv("/home/pulkit/PycharmProjects/python_prac/FL/static/tempDATA.csv")
+    X = data["Year"].values
+    Y = data["Time"].values
 
-@app.route('/', methods=['POST'])
+    data = stats.linregress(X,Y)
+    b1 = data[0]
+    b0 = data[1]
+
+    Y1 = []
+
+    for x in X:
+        y = b0 + (b1*x)
+        Y1.append(y)
+    pv = Y1[len(Y1) - 1]
+    plt.title('Next movie estimated time is {}'.format(pv))
+    plt.xlabel('Year')
+    plt.ylabel('Time')
+    plt.grid(True)
+    plt.plot(X, Y, "o")
+    plt.plot(X, Y1)
+    plt.savefig('/home/pulkit/PycharmProjects/python_prac/FL/static/plot1.png')
+
+@app.route('/', methods=['GET','POST'])
 def my_form_post():
-    from selenium import webdriver
 
-    desired_cap = {
-        'browser': 'Chrome',
-        'browser_version': '62.0',
-        'os': 'Windows',
-        'os_version': '10',
-        'resolution': '1024x768'
-    }
+    genre = request.form['genre']
+    sdate = request.form['sdate']
+    edate = request.form['edate']
+    totmovies = request.form['totmovies']
+    print('Data Scrapping Started !!!')
+    link = 'https://www.imdb.com/search/title?genres={}&countries=in&sort=year,asc&count={}&title_type=feature&release_date={},{}-12-31&runtime=1,1000'.format(
+        genre, totmovies, sdate, edate)
+    response = requests.get(link)
+    soup = BeautifulSoup(response.text, "html.parser")
 
-    driver = webdriver.Remote(
-        command_executor='http://pulkitkomal1:RuqYLDtsiuywgztaSdqx@hub.browserstack.com:80/wd/hub',
-        desired_capabilities=desired_cap)
-    data = []
-    data_tr = []
+    tagMOVIE = soup.find_all('span', class_='userRatingValue')
+    tagMOVIE_list = []
+    for x in tagMOVIE:
+        z = str(x)
+        text = z[43:52]
+        tagMOVIE_list.append(text)
 
-    def site_login():
-        user = request.form['user']
-        passwrd = request.form['pass']
-        URL = 'https://academics.gndec.ac.in/'
+    nameMOVIE = soup.find_all('img', class_='loadlate')
+    for x in nameMOVIE:
+        e = str(x)
+        z = e.replace(',', '.')
+        y = z.find('class')
+        nameOfMovie = z[10: y - 2]
+        movie.append(nameOfMovie)
 
-        driver.get(URL)
-        driver.find_element_by_id('username').send_keys('{}'.format(user))
-        driver.find_element_by_id('password').send_keys('{}'.format(passwrd))
+    timeTAG = soup.find_all('span', class_='runtime')
+    for x in timeTAG:
+        t = str(x.text[:-4])
+        z = int(t)
+        a_time.append(z)
 
-        submit = driver.find_elements_by_xpath("/html/body/div/div[2]/div/div/form/button")[0]
-        submit.click()
-        view_attendence = driver.find_elements_by_xpath("/html/body/div/div[2]/div/div/div[2]/form/button")[0]
-        view_attendence.click()
+    yearTAG = soup.find_all('span', class_='lister-item-year text-muted unbold')
+    for x in yearTAG:
+        z = str(x.text)
+        a = re.findall(r'\d+', z)
+        year.append(a[0])
 
-        a = driver.find_elements_by_tag_name('tr')
-        for x in a:
-            data_tr.append(x.text)
-        print('done1')
-        b = driver.find_elements_by_tag_name('td')
-        for x in b:
-            data.append(x.text)
-        print('done2')
+    print(movie)
+    print(a_time)
+    print(year)
+    dataset = list(zip(movie, a_time, year))
+    df = pd.DataFrame(data=dataset, columns=["Movie", "Time", "Year"])
+    df.to_csv("/home/pulkit/PycharmProjects/python_prac/FL/static/tempDATA.csv", index=False, header=True)
+    moviesNUM = 'Data taken from number of movies : {}'.format(len(movie))
+    yearsNUM = '\nMovies from Year {} to {}'.format(year[0],year[len(year) - 1])
+    plotGraph()
+    time.sleep(3)
+    return render_template('output.html', moviesNUM = moviesNUM, yearsNUM = yearsNUM)
 
-    def attendenceDATA():
-        print()
-        for x in range(0, 8):
-            print(data_tr[x])
-        y = 9
-        z = 10
-        totallect = 11
-        lectureatt = 12
-        j = 13
-        booll = True
-        um = 0
-
-        for v in range(0, 15):
-            print()
-            if um == 1:
-                booll = True
-            perc = float(data[j])
-            totLECT = float(data[totallect])
-            attLECT = float(data[lectureatt])
-            print(data[y], data[z], '\nTotal Lectures: ', totLECT, '\nLectures Attented: ', attLECT, '\nPercentage:',
-                  perc, '%')
-            y += 6
-            z += 6
-            j += 6
-            totallect += 6
-            lectureatt += 6
-            p = totLECT
-            q = attLECT
-            needLECT = 0
-            if (perc <= 75.00):
-                while (booll):
-                    p = p + 1
-                    q = q + 1
-                    perc3 = (q / p) * 100
-                    lecNeed = q - attLECT
-                    needLECT = lecNeed
-                    if perc3 >= 75.00:
-                        booll = False
-                        um = 1
-
-
-            else:
-                pass
-            if needLECT == 0:
-                print('You can bunk this class!!')
-            else:
-                print('Lectures you need to attend for 75%: ', needLECT)
-
-
-
-    try:
-        site_login()
-        attendenceDATA()
-        driver.quit()
-
-    except:
-        pass
-
+@app.after_request
+def add_header(response):
+    response.headers['X-UA-Compatible'] = 'IE=Edge,chrome=1,firefox=1'
+    response.headers['Cache-Control'] = 'public, max-age=0'
+    return response
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
+
 
