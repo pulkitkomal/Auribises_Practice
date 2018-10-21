@@ -92,7 +92,7 @@ def plotGraph():
     plt.plot(X, Y, "o")
     plt.plot(X, Y1)
     plt.savefig('plot.png')
-
+    plt.show()
 
 
 
