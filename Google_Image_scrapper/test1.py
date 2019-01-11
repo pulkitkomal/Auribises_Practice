@@ -29,3 +29,4 @@ for x in url_LIST:
     urllib.request.urlretrieve(x[0], 'D:/ImageCACHE/{}/{}.jpg'.format(user_INP,count))
     count = count + 1
 print('Downloading Complete!')
+os.startfile('D:/ImageCACHE/{}'.format(user_INP))
